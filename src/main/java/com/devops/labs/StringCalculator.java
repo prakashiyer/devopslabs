@@ -5,26 +5,38 @@ package com.devops.labs;
  */
 public class StringCalculator {
 
-    public void calculate(String input) {
+    public int calculate(String input) {
 
         int result = 0;
-        if(input != null) {
-            String[] inputArray = input.split(",");
+        if(input != null && !input.isEmpty()) {
+            String[] inputArray = input.split(",|\n");
 
-            if(inputArray.length == 0 || inputArray.length > 2) {
+            /*if(inputArray.length == 0 || inputArray.length > 2) {
                 throw new RuntimeException("Incorrect input parameters");
             } else {
                 for(String nextNumber: inputArray) {
-                    if(!nextNumber.equals("")) {
-                        Integer.parseInt(nextNumber);
+                    if(!nextNumber.isEmpty()) {
+                        result = result + Integer.valueOf(nextNumber);
                     }
 
                 }
+            }*/
+            for(String nextNumber: inputArray) {
+                if(!nextNumber.isEmpty()) {
+                    int numberToAdd = Integer.valueOf(nextNumber);
+                    if(numberToAdd < 0) {
+                        throw new RuntimeException("Negative number is not allowed");
+                    }
+                    if(numberToAdd <= 1000) {
+                        result = result + Integer.valueOf(nextNumber);
+                    }
+
+                }
+
             }
         }
 
-
-
+        return result;
 
     }
 

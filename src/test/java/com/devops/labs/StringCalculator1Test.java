@@ -8,30 +8,24 @@ import static org.junit.Assert.*;
  * Created by praka on 9/2/2017.
  */
 
-public class StringCalculatorTest {
+public class StringCalculator1Test {
 
 
     @Test
     public void testCalculateForCorrectInput() {
         StringCalculator stringCalculator = new StringCalculator();
-        String input = "2,4";
+        String input = "2\n4";
         stringCalculator.calculate(input);
         assertTrue(true);
     }
+
 
     @Test
-    public void testCalculateForEmptyInput() {
-        StringCalculator stringCalculator = new StringCalculator();
-        String input = "";
-        stringCalculator.calculate(input);
-        assertTrue(true);
-    }
-
-    @Test(expected = RuntimeException.class)
     public void testCalculateForMoreThanTwoNumbers() {
         StringCalculator stringCalculator = new StringCalculator();
-        String input = "2,6,8";
+        String input = "2\n6\n8";
         stringCalculator.calculate(input);
+        assertTrue(true);
     }
 
     @Test(expected = RuntimeException.class)
@@ -44,7 +38,7 @@ public class StringCalculatorTest {
     @Test(expected = RuntimeException.class)
     public void testCalculateForNonNumericInput() {
         StringCalculator stringCalculator = new StringCalculator();
-        String input = "ab,bc";
+        String input = "ab\nbc";
         stringCalculator.calculate(input);
     }
 
